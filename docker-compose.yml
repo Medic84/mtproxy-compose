@@ -1,0 +1,18 @@
+version: '2'
+
+  mtproxy:
+    image: telegrammessenger/proxy:latest
+    hostname: mtproxy
+    container_name: mtproxy
+    environment:
+      - SECRET_COUNT=1
+      - TAG=
+    volumes:
+      - proxy-config:/data
+    network_mode: "host"
+    restart: always
+    ports:
+      - 443:443
+volumes:
+  proxy-config:
+    external: true
